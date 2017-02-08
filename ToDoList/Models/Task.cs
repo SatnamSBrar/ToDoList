@@ -19,6 +19,7 @@ namespace ToDoList.Models
 
         [ForeignKey("List")]
         public int ListID { get; set; }
+        public virtual List List { get; set; }
 
         
     }
