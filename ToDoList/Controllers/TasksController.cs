@@ -37,7 +37,7 @@ namespace ToDoList.Controllers
         }
 
         // 
-        public ActionResult ToggleComplete(int? id)
+        public ActionResult ToggleComplete(int? id) //? means that a null value can also be held in the variable
         {
             if (id == null)
             {
