@@ -36,6 +36,31 @@ namespace ToDoList.Controllers
             return View(task);
         }
 
+        // 
+        public ActionResult ToggleComplete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Task task = db.Tasks.Find(id);
+            if (task == null)
+            {
+                return HttpNotFound();
+            }
+            
+            if (task.IsCompleted)   //default is task.IsCompleted == true
+            {
+                task.IsCompleted = false;
+            }
+            else
+            {
+                task.IsCompleted = true;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         // GET: Tasks/Create
         public ActionResult Create()
         {
